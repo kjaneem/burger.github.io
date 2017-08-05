@@ -1,0 +1,54 @@
+<div>
+    <img src="../public/assets/img/burger.jpg" alt="burger">
+</div>
+
+<h2>Eat-Da-Burger!</h2>
+
+<ul>
+  <!-- should this be 'burger' since that is the object name?-->
+  {{#each burger}}
+    {{#unless this.devoured}}
+      <li>
+        {{this.burger_name}}
+
+        <form action="/{{this.id}}?_method=PUT" method="POST">
+          <input type="hidden" name="devoured" value="true">
+          <button type="submit">Devour it!</button>
+        </form>
+
+        <!--{{> cats/delete-cat}}-->
+      </li>
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Devoured!</h2>
+
+<ul>
+  {{#each burger}}
+    {{#if this.devoured}}
+      <li>
+        {{this.burger_name}}
+
+        <form action="/{{this.id}}?_method=PUT" method="POST">
+          <input type="hidden" name="devoured" value="false">
+        </form>
+
+        <!--{{> cats/delete-cat}}-->
+      </li>
+    {{/if}}
+  {{/each}}
+</ul>
+
+<!-- should this be action="/"? -->
+<form class="create-update-form" action="/index" method="POST">
+
+  <div class="form-group">
+    <!-- change id="ca" to what?-->
+    <!--input type="text" id="ca" name="name"-->
+    <input type="text" name="burgerText">
+  </div>
+
+
+  <button type="submit">Submit</button>
+</form>
