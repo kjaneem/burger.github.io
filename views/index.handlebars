@@ -1,45 +1,66 @@
 <div>
-    <img src="../public/assets/img/burger.jpg" alt="burger">
+    <!--img src="../public/assets/img/burger.jpg" alt="burger"-->
+    <img src="/assets/img/burger.jpg" alt="burger">
+    <!--href="/assets/css/burger_style.css"-->
+
 </div>
 
 <h2>Eat-Da-Burger!</h2>
 
-<ul>
-  <!-- should this be 'burger' since that is the object name?-->
-  {{#each burger}}
+       
+<div class="col-md-6">
+
+<ol>
+  {{#each burgers}}
     {{#unless this.devoured}}
       <li>
         {{this.burger_name}}
-
+      
         <form action="/{{this.id}}?_method=PUT" method="POST">
           <input type="hidden" name="devoured" value="true">
           <button type="submit">Devour it!</button>
         </form>
-
-        <!--{{> cats/delete-cat}}-->
+       
       </li>
     {{/unless}}
   {{/each}}
-</ul>
+</ol>
 
-<h2>Devoured!</h2>
+</div>
 
-<ul>
-  {{#each burger}}
-    {{#if this.devoured}}
-      <li>
+<div class="col-md-6">
+</div>
+
+<div class="col-md-5">
+
+  {{#each burgers}}
+    {{#unless this.devoured}}
+      
         {{this.burger_name}}
 
-        <form action="/{{this.id}}?_method=PUT" method="POST">
-          <input type="hidden" name="devoured" value="false">
-        </form>
-
-        <!--{{> cats/delete-cat}}-->
-      </li>
-    {{/if}}
+      {{/unless}}
   {{/each}}
-</ul>
 
+</div>
+<div class="col-md-1">
+
+  {{#each burgers}}
+    {{#unless this.devoured}}
+      
+        <form action="/{{this.id}}?_method=PUT" method="POST">
+          <input type="hidden" name="devoured" value="true">
+          <button type="submit">Devour it!</button>
+        </form>
+    
+    {{/unless}}
+  {{/each}}
+
+</div>
+
+<div class="col-md-6">
+</div>
+
+<div class="col-md-12">
 <!-- should this be action="/"? -->
 <form class="create-update-form" action="/index" method="POST">
 
@@ -52,3 +73,6 @@
 
   <button type="submit">Submit</button>
 </form>
+
+</div>
+

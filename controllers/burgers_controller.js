@@ -16,10 +16,7 @@ burger.all(function(data) {
       burgers: data
     };
     console.log(hbsObject);
-    //res.render("index", hbsObject);
-    console.log(hbsObject);
-    //KM - do i need a res.end() here?
-    //res.end();
+    
   });
 
 router.get("/", function(req, res) {
@@ -28,10 +25,8 @@ router.get("/", function(req, res) {
       burgers: data
     };
     console.log(hbsObject);
-    //res.render("index", hbsObject);
-    res.render("/", hbsObject);
-    //KM - do i need a res.end() here?
-    //res.end();
+    //YOU MUST USE "index" here to call index.handlebars file
+    res.render("index", hbsObject);
   });
 });
 
